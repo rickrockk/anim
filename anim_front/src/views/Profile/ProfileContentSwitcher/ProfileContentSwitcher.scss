@@ -1,0 +1,18 @@
+.profile__content-switcher {
+  .content-switcher__btn {
+    font-size: 1.5rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+
+    &:not(:first-of-type) {
+      margin-left: 1rem;
+    }
+  }
+
+  .content-switcher__btn_active {
+    background-color: #AF4C4C;
+    color: white;
+  }
+}

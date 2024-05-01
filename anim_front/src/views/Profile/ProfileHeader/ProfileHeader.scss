@@ -1,0 +1,45 @@
+.main__profile {
+  font-family: KellySlab;
+  padding-bottom: 2rem;
+  .main__profile-header {
+    .main__cover {
+      position: relative;
+      background-image: url("/src/assets/cover.jpg");
+      background-size: cover;
+      min-height: 300px;
+
+      .profile__name {
+        position: absolute;
+        left: 250px;
+        bottom: 20px;
+        font-size: 2rem;
+      }
+    }
+  }
+  .main__profile-stats {
+    border: 1px solid black;
+    background-color: white;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    padding-left: 15.7rem;
+
+    .profile__img {
+      position: absolute;
+      width: 7rem;
+      left: 100px;
+      top: 335px;
+    }
+
+    .stats__list {
+      display: flex;
+      list-style: none;
+      .stats__item {
+        font-size: 2rem;
+
+        &:not(:first-of-type) {
+          margin-left: 4rem;
+        }
+      }
+    }
+  }
+}

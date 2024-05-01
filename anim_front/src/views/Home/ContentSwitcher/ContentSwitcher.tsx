@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './ContentSwitcher.scss'
 
 
 export const ContentSwitcher = () => {
+    const [isActive, setIsActive] = useState(false)
     return (
         <div className="homepage__switcher">
-            <button className="homepage__btn">Рекомендации</button>
-            <button className="homepage__btn">Новые</button>
+            <button className={isActive == false ? "homepage__btn homepage__btn_active" : "homepage__btn"} onClick={() => setIsActive(false)}>Рекомендации</button>
+            <button className={isActive == true ? "homepage__btn homepage__btn_active" : "homepage__btn"} onClick={() => setIsActive(true)}>Новые</button>
         </div>
     );
 };
