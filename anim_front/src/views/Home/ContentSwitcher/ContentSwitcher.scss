@@ -1,0 +1,14 @@
+.homepage__switcher {
+  .homepage__btn {
+    font-size: 2rem;
+
+    &:not(:first-of-type) {
+      margin-left: 2rem;
+    }
+
+    &:nth-child(1) {
+      border-right: 1px solid black;
+      padding-right: 2rem;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.modal__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .modal__head {
+    display: flex;
+    align-items: center;
+    justiy-content: center;
+    flex-direction: column;
+
+    .modal__logo {
+      max-width: 5rem;
+    }
+
+    .modal__header {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+    }
+
+  }
+
+  .modal__body {
+    .modal__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid black;
+      padding: 2rem;
+
+      .form__header {
+        margin-bottom: 2rem;
+        font-weight: 400;
+      }
+
+      .form__label {
+        &:not(:first-of-type) {
+          margin-top: 1rem;
+        }
+        .form__input {
+          outline: none;
+          border: none;
+          min-width: 350px;
+          min-height: 50px;
+          background-color: #ABBED1;
+          border-radius: 37px;
+          padding: 1rem;
+
+          &::placeholder {
+            color: #89939E;
+          }
+        }
+      }
+      .form__switch {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .form__restore-pass {
+        font-size: 1rem;
+        color: #717171;
+      }
+
+      .form__login-btn {
+        color: white;
+        margin-top: 1rem;
+        background-color: #AF4C4C;
+        min-width: 350px;
+        border-radius: 37px;
+        padding: .5rem;
+        font-size: 1.5rem;
+      }
+
+      .form__terms {
+        border-top: 2px solid rgba(0, 0, 0, 0.5);
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        max-width: 312px;
+        text-align: center;
+        color: #717171;
+      }
+    }
+  }
+}
