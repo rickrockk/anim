@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Post.scss'
 import AuthorImg from '/src/assets/author_img.png'
 import PostImg from '/src/assets/post_img.jpg'
@@ -6,6 +6,7 @@ import PostLike from '/src/assets/post_like.svg'
 import PostComment from '/src/assets/post_comment.svg'
 
 export const Post = () => {
+    const [isSubscribed, setIsSubscribed] = useState(false)
     return (
         <div className="post">
             <div className="post__head">
@@ -16,8 +17,8 @@ export const Post = () => {
                         <p className="author__desc">Очень приятно Бог</p>
                     </div>
                 </div>
-                <button className="post__subscribe">
-                    Подписаться
+                <button className={isSubscribed == false ? "post__subscribe" : "post__subscribe post__subscribe_active"} onClick={() => setIsSubscribed(!isSubscribed)}>
+                    {isSubscribed == false ? 'Подписаться' : 'Вы подписаны'}
                 </button>
             </div>
             <div className="post__body">

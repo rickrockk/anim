@@ -31,6 +31,12 @@
       padding: 1rem 2rem;
       border-radius: 4px;
       background-color: #AF4C4C;
+
+      &_active {
+        background-color: white;
+        color: #AF4C4C;
+        border: 1px solid #4D4D4D;
+      }
     }
   }
   .post__body {
