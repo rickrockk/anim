@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Profile.scss'
 import {ProfileHeader} from "./ProfileHeader/ProfileHeader";
 import {ProfileContentSwitcher} from "./ProfileContentSwitcher/ProfileContentSwitcher";

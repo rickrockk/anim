@@ -1,0 +1,29 @@
+.dragndrop__form {
+  background-image: url('/src/assets/Background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5rem 7rem;
+
+  .dragndrop__area {
+    background-color: white;
+    border: 1px dashed #717171;
+    min-width: 756px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 4rem 0;
+    border-radius: 10px;
+
+    .dragndrop__title {
+      margin-top: 4rem;
+      font-size: 2rem;
+    }
+
+    .dragndrop__subtext {
+      margin-top: 1.5rem;
+      font-size: 2rem;
+      color: #4D4D4D;
+    }
+  }
+}
