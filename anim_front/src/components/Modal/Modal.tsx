@@ -12,6 +12,11 @@ export const Modal = ({children, isActive, setIsActive}) => {
     } else {
         document.body.style.overflow = 'auto';
     }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            setIsActive(false);
+        }
+    });
     return (
         <div className={modalClass} onClick={() => setIsActive(false)}>
             <div className="modal__content" onClick={(e) => e.stopPropagation()}>

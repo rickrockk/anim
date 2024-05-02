@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Header.scss'
+import {Link, useLocation} from "react-router-dom";
 import {Modal} from "../Modal/Modal";
 import Logo from '/src/assets/Logo.svg';
 import Bell from '/src/assets/Bell.svg';
@@ -9,6 +10,12 @@ import {RegisterForm} from "../Modal/RegisterForm/RegisterForm";
 export function Header() {
     const [modal, setModal] = useState(false)
     const [isLogin, setIsLogin] = useState(false)
+    const location = useLocation();
+    const [currentPath, setCurrentPath] = useState(location.pathname);
+
+    useEffect(() => {
+        setCurrentPath(location.pathname);
+    }, [location.pathname]);
     return (
         <header className="header">
             <Modal isActive={modal} setIsActive={setModal}>
@@ -22,8 +29,10 @@ export function Header() {
                     <li className="nav__item">
                         <img src={Logo} alt="Логотип"/>
                     </li>
-                    <li className="nav__item">
-                        Главная
+                    <li className={currentPath === "/" ? "nav__item nav__item_active" : "nav__item"}>
+                        <Link to="/">
+                            Главная
+                        </Link>
                     </li>
                     <li className="nav__item">
                         Все события
