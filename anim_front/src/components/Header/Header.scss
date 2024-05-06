@@ -16,6 +16,16 @@
         &_block {
           font-size: 1.5em;
           margin-left: 2em;
+
+          .nav__block {
+            display: flex;
+            align-items: center;
+
+            .profile__block {
+              display: flex;
+              align-items: center;
+            }
+          }
         }
 
         &:not(:first-of-type) {

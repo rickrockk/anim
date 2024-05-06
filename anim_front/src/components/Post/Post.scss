@@ -7,8 +7,22 @@
   padding: 3rem;
   .post__head {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
+
+    .post__delete-btn {
+      display: none;
+      &_show {
+        display: block;
+        right: -30px;
+        top: -40px;
+        position: absolute;
+        font-size: 2rem;
+        right: -30px;
+        top: -40px;
+      }
+    }
     .post__author {
       display: flex;
       flex-direction: row;
