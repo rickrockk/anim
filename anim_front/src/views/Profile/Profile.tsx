@@ -11,9 +11,8 @@ import axios from "axios";
 
 export function Profile(props) {
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            userService.fetchUser(token);
+        if (localStorage.getItem(("token"))) {
+            userService.fetchUser(localStorage.getItem(("token")));
         }
     }, [])
     return (

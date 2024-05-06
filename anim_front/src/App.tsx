@@ -7,8 +7,8 @@ import './App.scss'
 import {Footer} from "./components/Footer/Footer";
 import {Profile} from "./views/Profile/Profile";
 import userService from "./services/UserService";
-import {RequireAuth} from "./services/RequireAuth";
 import {observer} from "mobx-react-lite";
+import {PrivateRoute} from "./privateRoute/privateRoute";
 
 function App() {
   return (
@@ -17,7 +17,9 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/profile" element={<Profile/>}/>
+                <Route exact path='/' element={<PrivateRoute/>}>
+                    <Route exact path='/profile' element={<Profile/>}/>
+                </Route>
             </Routes>
             <Footer/>
         </BrowserRouter>
