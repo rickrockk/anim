@@ -1,29 +1,64 @@
 import React, {FC, useContext, useState} from 'react'
 import './LoginForm.scss'
-import { useNavigate } from "react-router-dom";
+import {changeloggedIn} from "../../../actions/user.actions";
+import {history} from "../../../helpers/history";
+import {connect} from "react-redux";
+import {withRouter} from 'react-router-dom';
+import userService from "../../../services/login/user.service";
+
 import Logo from '/src/assets/ModalLogo.svg'
-import {Context} from "../../../main";
-import { Redirect } from 'react-router-dom';
-import { useHistory } from 'mobx-react-lite';
-import userService from "../../../services/UserService";
-import {observer} from "mobx-react-lite";
+const LoginForm: FC = function({setIsLogin, setModal, setLoggedIn}) {
+    // const [email, setEmail] = useState<string>('')
+    // const [password, setPassword] = useState<string>('')
+    // const [loginSubmitted, setLoginSubmitted] = useState<boolean>(false)
 
-export const LoginForm: FC = function({setIsLogin, setModal}) {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const {store} = useContext(Context)
-    const navigate = useNavigate();
+    const [loginData, setLoginData] = useState({
+        email: '',
+        password: '',
+        loginSubmitted: false
+    });
 
-    const handleLogin = async (e) => {
-        e.preventDefault()
-        store.login(email, password);
-        setModal(false);
-        const token = localStorage.getItem("token");
-        if (token) {
-            userService.fetchUser(token);
-        }
-        navigate('/profile')
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setLoginData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
     };
+
+    const doLogin = async (event) => {
+        event.preventDefault();
+        setLoginData({ ...loginData, loginSubmitted: true });
+        const { email, password } = loginData;
+
+        userService.login(email, password)
+            .then((res) => {
+                if (res.success) {
+                    if (res.data.id === 0) {
+                        localStorage.removeItem('userDetails');
+                        clearLoginForm();
+                    } else {
+                        localStorage.setItem('userDetails', JSON.stringify(res.data));
+                        setLoggedIn(true, res.data);
+                        clearLoginForm();
+                        history.push('/profile');
+                    }
+                } else {
+                    localStorage.removeItem('userDetails');
+                    clearLoginForm();
+                }
+            })
+            .catch((error) => {
+                localStorage.removeItem('userDetails');
+                clearLoginForm();
+            });
+    };
+
+    const clearLoginForm = () => {
+        setLoginData({ email: '', password: '', loginSubmitted: false });
+    };
+
+    const { email, password } = loginData;
 
     return (
         <div className="modal__inner">
@@ -37,7 +72,7 @@ export const LoginForm: FC = function({setIsLogin, setModal}) {
                     <label className="form__label" htmlFor="login">
                         <input
                             className="form__input"
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={handleChange}
                             value={email}
                             id='login'
                             type="text"
@@ -47,7 +82,7 @@ export const LoginForm: FC = function({setIsLogin, setModal}) {
                     <label className="form__label" htmlFor="password">
                         <input
                             className="form__input"
-                            onChange={e => setPassword(e.target.value)}
+                            onChange={handleChange}
                             value={password}
                             id='password'
                             type="password"
@@ -61,9 +96,9 @@ export const LoginForm: FC = function({setIsLogin, setModal}) {
                         Забыли пароль?
                     </button>
                     <button
-                        onClick={handleLogin}
                         className="form__login-btn"
                         type='submit'
+                        onClick={doLogin}
                     >
                         Войти
                     </button>
@@ -74,3 +109,13 @@ export const LoginForm: FC = function({setIsLogin, setModal}) {
         </div>
     );
 };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setLoggedIn: (isLoggedIn, user) => {
+            dispatch(changeloggedIn(isLoggedIn, user));
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps)(LoginForm);
