@@ -5,7 +5,7 @@ import {CoverUpload} from "../CoverUpload/CoverUpload";
 import Right from '/src/assets/Right.svg'
 import ProfileImg from '/src/assets/author_img.png'
 
-export function ProfileHeader() {
+export function ProfileHeader(props) {
     const [modal, setModal] = useState(false)
     return (
         <div className="main__profile-header">
@@ -13,7 +13,7 @@ export function ProfileHeader() {
                 <CoverUpload/>
             </Modal>
             <div className="main__cover">
-                <p className="profile__name">Алина Матросова</p>
+                <p className="profile__name">{props.name}</p>
                 <button onClick={() => setModal(true)} className="profile__cover-change">Изменить <span className="btn__arrow"><img src={Right} alt="Стрелка вправо"/></span></button>
             </div>
             <div className="main__profile-stats">

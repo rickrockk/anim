@@ -6,17 +6,16 @@ class UserManager(BaseUserManager):
             email = self.normalize_email(email),
             first_name=first_name,
         )
-
         user.set_password(password)
         user.save()
 
         return user
 
     def create_superuser(self,email,first_name,password):
-        user = self.model(
-            email = email,
+        user = self.create_user(
+            email = self.normalize_email(email),
             first_name=first_name,
-            password=password,
+            password=password
         )
 
         user.is_active = True

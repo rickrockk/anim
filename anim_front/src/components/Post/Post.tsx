@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import './Post.scss'
+import userService from "../../services/UserService";
 import AuthorImg from '/src/assets/author_img.png'
 import PostImg from '/src/assets/post_img.jpg'
 import PostLike from '/src/assets/post_like.svg'
 import PostComment from '/src/assets/post_comment.svg'
 
 export const Post = () => {
+    const [isStaff, setIsStaff] = useState(false)
     const [isSubscribed, setIsSubscribed] = useState(false)
     return (
         <div className="post">
             <div className="post__head">
+                <button className={isStaff ? "post__delete-btn_show" : "post__delete-btn"}>×</button>
                 <div className="post__author">
                     <img src={AuthorImg} alt="Аватар" className="author__img"/>
                     <div className="author__info">
