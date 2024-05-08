@@ -3,6 +3,7 @@
   .main__homepage {
     background-image: url("/src/assets/Background.jpg");
     background-repeat: no-repeat;
+    position: relative;
     background-size: cover;
     padding-bottom: 12rem;
 
@@ -28,7 +29,12 @@
     display: flex;
     justify-content: space-between;
     padding: 1.5rem 1.5rem 1.5rem 3rem;
-
+    .homepage__bro {
+      position: absolute;
+      width: 125px;
+      right: 20px;
+      bottom: 20px;
+    }
   }
   }
 }
