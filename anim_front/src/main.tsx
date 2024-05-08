@@ -18,6 +18,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Context.Provider value={{store}}>
         <React.StrictMode>
             <App />
-        </React.StrictMode>,
+        </React.StrictMode>
     </Context.Provider>
 )
