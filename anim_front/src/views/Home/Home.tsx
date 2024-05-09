@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import {PostsList} from "../../components/PostsList/PostsList";
 import {Event} from './Event/Event';
+import {Link} from "react-router-dom";
 import Bro from '../../assets/bro.png';
 import {ContentSwitcher} from "./ContentSwitcher/ContentSwitcher";
 import './Home.scss'
@@ -19,7 +20,7 @@ export function Home() {
                     <div className="homepage__body">
                         <PostsList/>
                         <Event/>
-                        <img className="homepage__bro" src={Bro} alt="Bro"/>
+                        <Link to="https://mtrsv.itch.io/game?secret=De8zcB5xvuxntYsBJIHeKaQqM" target="_blank" rel='noopener noreferrer'><img className="homepage__bro" src={Bro} alt="Bro"/></Link>
                     </div>
                 </div>
             </section>
