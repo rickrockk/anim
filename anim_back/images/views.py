@@ -3,11 +3,17 @@ from rest_framework.response import Response
 from .models import Image, User
 from .serializers import ImageSerializer
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
+class IsOwnerOrAdminOrReadOnly(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
+
+        # Проверяем, является ли пользователь администратором
+        if request.user.is_staff or request.user.is_superuser:
+            return True
+
+        # Проверяем, является ли пользователь владельцем объекта
         return obj.user == request.user and str(obj.id) == str(view.kwargs.get(view.lookup_field))
 
 class ImageViewSet(viewsets.ModelViewSet):
@@ -31,6 +37,6 @@ class ImageViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'destroy':
-            return [IsOwnerOrReadOnly()]
+            return [IsOwnerOrAdminOrReadOnly()]
         return super().get_permissions()
 
