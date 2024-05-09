@@ -20,7 +20,7 @@ export function Home() {
                     <div className="homepage__body">
                         <PostsList/>
                         <Event/>
-                        <Link to="https://mtrsv.itch.io/game?secret=De8zcB5xvuxntYsBJIHeKaQqM" target="_blank" rel='noopener noreferrer'><img className="homepage__bro" src={Bro} alt="Bro"/></Link>
+                        <Link className="homepage__bro" to="https://mtrsv.itch.io/game?secret=De8zcB5xvuxntYsBJIHeKaQqM" target="_blank" rel='noopener noreferrer'><img src={Bro} alt="Bro"/></Link>
                     </div>
                 </div>
             </section>

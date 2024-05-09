@@ -1,6 +1,6 @@
 import React, {FC, useContext, useState} from 'react'
 import './LoginForm.scss'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import Logo from '/src/assets/ModalLogo.svg'
 import {Context} from "../../../main";
 import { Redirect } from 'react-router-dom';
