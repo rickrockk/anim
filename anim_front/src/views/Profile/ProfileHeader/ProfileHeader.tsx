@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './ProfileHeader.scss'
 import {Modal} from "../../../components/Modal/Modal";
-import {CoverUpload} from "../CoverUpload/CoverUpload";
+import {PhotoUpload} from "../CoverUpload/PhotoUpload";
 import Right from '/src/assets/Right.svg'
 import ProfileImg from '/src/assets/author_img.png'
 
@@ -10,7 +10,7 @@ export function ProfileHeader(props) {
     return (
         <div className="main__profile-header">
             <Modal isActive={modal} setIsActive={setModal}>
-                <CoverUpload/>
+                <PhotoUpload/>
             </Modal>
             <div className="main__cover">
                 <p className="profile__name">{props.name}</p>

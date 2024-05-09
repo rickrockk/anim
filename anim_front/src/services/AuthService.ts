@@ -14,7 +14,11 @@ export class AuthService {
 
     constructor() {
         makeAutoObservable(this);
-        const storedToken = localStorage.getItem('token');
+        this.token = localStorage.getItem('token'); // Используем storedToken для инициализации
+        if (this.token) {
+            this.isAuth = true;
+            userService.fetchUser(this.token); // Загружаем данные пользователя при инициализации
+        }
     }
 
     async login(email: string, password: string) {
@@ -25,6 +29,7 @@ export class AuthService {
         console.log(response.data)
         this.isAuth = true;
         this.setToken(response.data.accessToken);
+        await userService.fetchUser(response.data.accessToken); // Загружаем данные пользователя после логина
     }
 
     async logout() {

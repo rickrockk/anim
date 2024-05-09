@@ -1,6 +1,6 @@
 from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
-from .models import Image
+from .models import Image, User
 from .serializers import ImageSerializer
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
@@ -30,7 +30,7 @@ class ImageViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def get_permissions(self):
-
         if self.action == 'destroy':
             return [IsOwnerOrReadOnly()]
         return super().get_permissions()
+

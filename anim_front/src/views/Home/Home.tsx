@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
-import {Post} from "../../components/Post/Post";
+import React, {useState, useEffect} from 'react'
+import axios from 'axios';
+import {PostsList} from "../../components/PostsList/PostsList";
 import {Event} from './Event/Event';
 import Bro from '../../assets/bro.png';
 import {ContentSwitcher} from "./ContentSwitcher/ContentSwitcher";
@@ -16,7 +17,7 @@ export function Home() {
                         <h2 className="homepage__header">Свежие события</h2>
                     </div>
                     <div className="homepage__body">
-                        <Post/>
+                        <PostsList/>
                         <Event/>
                         <img className="homepage__bro" src={Bro} alt="Bro"/>
                     </div>

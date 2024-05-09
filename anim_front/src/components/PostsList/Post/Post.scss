@@ -1,10 +1,14 @@
 .post {
-  max-width: 741px;
-  max-height: 802px;
+  min-width: 741px;
+  min-height: 802px;
   border-radius: 10px;
   border: 1px solid black;
   background-color: white;
   padding: 3rem;
+
+  &:not(:first-of-type) {
+    margin-top: 1.5rem;
+  }
   .post__head {
     display: flex;
     position: relative;
@@ -58,6 +62,7 @@
     .post__image {
       border: 1px solid #BB6666;
       border-radius: 5px;
+      max-width: 470px;
     }
     .post__desc {
       margin-top: 1rem;
