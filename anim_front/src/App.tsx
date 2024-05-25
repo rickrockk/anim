@@ -6,6 +6,7 @@ import {Home} from "./views/Home/Home";
 import './App.scss'
 import {Footer} from "./components/Footer/Footer";
 import {Profile} from "./views/Profile/Profile";
+import Events from './views/Events/Events';
 import userService from "./services/UserService";
 import {observer} from "mobx-react-lite";
 import {PrivateRoute} from "./privateRoute/privateRoute";
@@ -20,6 +21,7 @@ function App() {
                 <Route exact path='/' element={<PrivateRoute/>}>
                     <Route exact path='/profile' element={<Profile/>}/>
                 </Route>
+                <Route exact path='/events' element={<Events/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>

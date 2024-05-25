@@ -1,0 +1,18 @@
+.container__card{
+    background-image: url("/src/assets/Background.jpg");
+
+}
+.events_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    font-size: 2rem;
+    font-family:KellySlab ;
+    border-bottom: 1px solid black;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+}

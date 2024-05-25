@@ -1,0 +1,29 @@
+
+.events {
+    padding: 10px;
+    margin: 70px;
+    font-family: KellySlab;
+    background-color: white;
+  .img{
+        height: 25rem;
+        width: 75rem;
+  }
+    .event__info {
+      padding: 1rem;
+  
+      .event__desc {
+        font-size: 1.75rem;
+      }
+  
+      .event__date {
+        .event__icon {
+          margin-right: .75rem;
+        }
+        font-size: 1.75rem;
+        margin-top: 1rem;
+        color: #7D2323;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }

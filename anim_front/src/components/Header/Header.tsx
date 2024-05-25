@@ -46,8 +46,10 @@ const Header = function() {
                             Главная
                         </Link>
                     </li>
-                    <li className="nav__item">
-                        Все события
+                    <li className={currentPath === "/events" ? "nav__item nav__item_active" : "nav__item"}>
+                        <Link to = "/events">
+                            Все события
+                        </Link>
                     </li>
                     <li className="nav__item">
                         Подписки
